@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My portfolio website</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Science+Gothic:wght@100..900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* p{
+  font-family: var(--font_family_1);
+}
+* h1, h2, h3, h4, h5{
+  font-family: var(--font_family_2);
+}
+html{
+  scroll-behavior: smooth;
+}
+:root{
+  --homepage_bg: url("Potential.jpg");
+  --hero_clr: #B3A4FF;
+  --basic_clr: white;
+  --phone_btn_clr: #25D366;
+  --link_bg_clr:  #858BD3;
+  --bg_1: #C89EFF;
+  --bg_2: #D1AEFC;
+  --bg_3: #D9BDF8;
+  --bg_4: #E2CDF4;
+  --bg_5: #EADCF0;
+  --alt_background: #1B1D5C;
+  --heading_size: clamp(2.5rem,6vw,4rem);
+  --alt_heading_size: clamp(1.5rem,4vw,1.6rem);
+  --btn_size: clamp(1rem,2vw,1.3rem);
+  --pg_size: clamp(1rem,3vw,1.3rem);
+  --icon_height: clamp(40px,5vh,60px);
+  --icon_width: clamp(200px,35vw,300px);
+  --landscape_heading_size: 35px;
+  --font_family_1: "Schibsted Grotesk", sans-serif;
+  --font_family_2: "Schibsted Grotesk", sans-serif;
+  --btn_height: clamp(40px,5vh,50px);
+  --btn_width: clamp(200px,40vw,350px);
+  --margin_top: clamp(3vh,3.5vh,13%);
+  --tablet_pg_font_size: 2.8rem;
+  --tablet_h_font_size: 2.9rem;
+}
+
+/** Homepage background **/
+#homepage{
+  z-index: 999;
+  background: var(--homepage_bg) no-repeat;
+  min-height: 60vh;
+  width: 100vw;
+  background-position: center;
+  overflow: hidden;
+}
+
+/** introductory animation styling **/
+.intro-logo{
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  background: center;
+  animation: shrink 0.8s ease-in forwards 0.5s, rotate 1.5s linear 1.5s;
+  
+}
+@keyframes shrink {
+  to {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    box-shadow: 0 0 3px black;
+  }
+}
+@keyframes rotate{
+  to{
+    transform: rotate(1080deg);
+  }
+}
+
+.logo{
+  height: inherit;
+  width: inherit;
+}
+
+.intro_cont{
+   animation: adjust 1s forwards 0.4s, strech 1s forwards 2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+}
+@keyframes adjust{
+  to{
+    z-index: 999;
+    margin-top: 4%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+@keyframes strech{
+  from{
+    width: 20%;
+    z-index: 999;
+  }
+  to{
+    width: 90%;
+    padding: 6px;
+    border-radius: 0.4rem;
+    background: var(--homepage_bg) center;
+    box-shadow: 0 0 1px var(--basic_clr);
+    position: fixed;
+    top: 0;
+    z-index: 999;
+  }
+}
+
+/** menu styling **/
+#hamburger_menu{
+  display: none;
+  transition: all 0.5s ease-in-out;
+  padding
+}
+@keyframes show{
+  to{opacity: 1}
+}
+
+#close_menu{
+  position: fixed;
+  top: 4.8%;
+  left: 89.8%;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+#Desktop_links,#links{
+  display: none;
+}
+
+ul#links{
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: var(--link_bg_clr);
+  z-index: 999;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  visibility: hidden;
+}
+ul#links li a{
+  text-decoration: none;
+  color: var(--basic_clr);
+  font-size: var(--pg_size);
+}
+
+/** introductory text **/
+.intro-text{
+  height: 60vh;
+  width: 100vw;
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 30px;
+  opacity: 0;
+  line-height: 1.5;
+  animation: show 1.5s ease-in forwards 2s;
+}
+.intro-text h2:nth-child(1){
+  color: var(--hero_clr);
+  font-size: var(--heading_size);
+  font-family: var(--font_family_1);
+  margin-bottom: -8px;
+}
+.intro-text h2:nth-child(2){
+  color: var(--hero_clr);
+  font-size: var(--alt_heading_size);
+  font-family: var(--font_family_1);
+}
+.hero-text{
+  text-align: center;
+  font-size: var(--pg_size);
+  color: var(--basic_clr);
+  font-family: var(--font_family_1);
+  padding-left: 10px;
+  width: 100vw;
+}
+.occupation{
+  color: var(--basic_clr);
+  font-size: var(--alt_heading_size);
+}
+
+/** CTA buttons styles **/
+.buttons{
+  height: var(--btn_height);
+  width: var(--btn_width);
+  padding-left: 10px;
+  display: flex;
+  margin-top: 10px;
+  gap: 15px;
+}
+
+.buttons button:nth-child(1){
+  background-color: var(--hero_clr);
+  color: var(--basic_clr);
+  height: 100%;
+  width: 50%;
+  font-weight: 550;
+  font-size: var(--btn_size);
+  box-shadow: 0 0 4px var(--basic_clr);
+  border: none;
+  border-radius: 3px;
+  animation: shake 1s linear infinite;
+}
+@keyframes shake{
+  20%{
+    transform: rotate(-2deg);
+  }
+  40%{
+    transform: rotate(2deg);
+  }
+}
+
+.buttons button:nth-child(2){
+  background-color:  var(--phone_btn_clr);
+  color: var(--basic_clr);
+  height: 100%;
+  width: 60%;
+  font-weight: 550;
+  font-size: var(--btn_size);
+  border: none;
+  border-radius: 3px;
+}
+
+/** links icons styling **/
+.icons, .footer_icons{
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  height: var(--icon_height);
+  width: var(--icon_width);
+  margin-top: 10px;
+}
+.footer_icons img{
+  height: 100%;
+  width: 100%;
+}
+.icons img{
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+.facebook{
+  opacity: 1;
+  animation: show 1.5s ease-in forwards 0.2s;
+}
+.x {
+  opacity: 1;
+  animation: show 1.5s ease-in forwards 1s;
+}
+.mail {
+  opacity: 1;
+  animation: show 1.5s ease-in forwards 1.5s;
+}
+.discord {
+  opacity: 1;
+  animation: show 1.5s ease-in forwards 2s;
+}
+
+/** servicespage styling**/
+#service{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--alt_background);
+  object-fit: cover;
+  padding-bottom: 40px;
+}
+
+#service > h2{
+  color: var(--basic_clr);
+  font-size: var(--alt_heading_size);
+  text-align: center;
+  opacity: 0;
+  animation: show 1s linear forwards 2.8s;
+  margin-top: var(--margin_top);
+}
+
+#service > p{
+  color: var(--basic_clr);
+  font-size: var(--pg_size);
+  text-align: center;
+  margin-top: var(--margin_top);
+  opacity: 0;
+  animation: show 1s ease-in forwards 3s;
+  width: 95vw;
+}
+
+.service_box{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 50px;
+  width: 80vw;
+  min-height: 60vh;
+  margin-top: clamp(3vh,5vh,13%);
+  transition: opacity 1.3s ease-in-out;
+}
+
+.cover {
+  position: absolute;
+  inset: 0;
+  background: black;
+  border-radius: inherit;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  animation: move_down 1.5s linear forwards 1s;
+  animation-play-state: paused;
+  transform-origin: bottom;
+}
+
+@keyframes move_down {
+  to {
+    height: 0;
+  }
+}
+
+.info_box {
+  /*height: 100%;
+  width: 100%;*/
+  position: relative;
+  border-radius: 0.7rem;
+  box-shadow: inset 0 0 0 3px var(--basic_clr);
+  animation: fadeIn 2s ease-in forwards;
+  animation-play-state: paused;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+.info_box.displayBox .cover{
+  animation-play-state: running; 
+}
+
+.displayBox{
+  visibility: visible;
+  animation-play-state: running; 
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.mask_color {
+  position: absolute;
+  opacity: 0.8;
+  inset: 0;
+  background: black; /* or any color you want */
+  border-radius: inherit;
+  z-index: 1; /* make it below the text */
+}
+
+.title {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: var(--basic_clr);
+  font-size: var(--alt_heading_size);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  text-align: center;
+  width: 90%;
+}
+.service_icon{
+  position: relative;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+  height: 68px;
+  width: 64px;
+  z-index: 2;
+}
+.service_describ{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 80%;
+  width: 90%;
+  color: var(--basic_clr);
+  z-index: 2;
+  font-size: var(--pg_size);
+  line-height: 1.8;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  margin-bottom: var(--margin_top);
+}
+
+/* My Projects styling */
+#Projects{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  text-align: center;
+  background: #202060;
+  padding-bottom: 60px;
+}
+
+.projects_describtion{
+  opacity: 0;
+  transition: all 1.5s ease-in-out;
+}
+.projects_describtion > h2{
+  text-align: center;
+  color: var(--basic_clr);
+  font-size: var(--alt_heading_size);
+  padding-top: var(--margin_top);
+}
+.projects_describtion > p{
+  color: var(--basic_clr);
+  font-size: var(--pg_size);
+  padding: 10px;
+  text-align: center;
+}
+
+.cards{
+  /*display: flex;
+  flex-direction: column;*/
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin-top: 8vh;
+  gap: 50px;
+}
+.cards p{
+  padding: 7px;
+}
+
+.project_img_div{
+  display: grid;
+  place-items: cente;
+  opacity: 0;
+  transform: translateX(-20%);
+  transition: all 0.5s ease-in-out;
+}
+
+.project_img{
+  height: 350px;
+  width: 350px;
+  display: none;
+}
+.project_img_slide{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.displayImg{
+  display: grid;
+}
+
+.describ_link{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 96.8%;
+  height: 300px;
+  background: var(--alt_background);
+  border-radius: 0.5rem;
+  color: white;
+  box-shadow: 0 0 2px black;
+  position: absolute;
+  margin-left: 1.4%;
+  margin-top: 12%;
+  visibility: hidden;
+  transition: all 0.3s ease-in;
+  opacity: 0.4;
+}
+.describ_link_animate{
+  margin-top: 9%;
+  opacity: 1;
+}
+
+.show_describtion{
+  visibility: visible;
+}
+.hide_visibility{
+  visibility: hidden;
+}
+.name_link_cont{
+  padding: 5px;
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
+  box-shadow: inset 0 0 2px black;
+  width: 96.8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* contact section styling */
+
+#contact{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  background: var(--homepage_bg) center fixed;
+  text-align: center;
+  padding-bottom: 50px;
+  border-bottom: .5px solid white;
+}
+.contact_describtion{
+  opacity: 0;
+  transition: all 1.5s ease-in-out;
+  text-align: center;
+}
+.contact_describtion > h2{
+  color: var(--basic_clr);
+  font-size: var(--alt_heading_size);
+  padding-top: var(--margin_top);
+}
+.contact_describtion > p{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--basic_clr);
+  font-size: var(--pg_size);
+  margin-top: var(--margin_top);
+  width: 95vw;
+  text-align: center;
+}
+
+.form_cont{
+  width: 92vw;
+  margin-top: 165px;
+  background: var(--alt_background);
+  box-shadow: 0 0 3px var(--basic_clr);
+  text-align: center;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  opacity: 0;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+.form_cont_slideUp{
+  margin-top: 35px;
+  opacity: 1;
+}
+.client_input{
+  padding: 15px;
+  height: clamp(300px,40vh,500px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.client_input input{
+  height: 48px;
+  width: 80vw;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: inset 0 0 2px var(--basic_clr);
+  font-size: var(--pg_size);
+  color: white;
+  padding-left: 5px;
+  transition: all 0.5s ease-in-out;
+}
+.client_input input:hover{
+  box-shadow: 0 0 4px violet;
+  scale: 1.03;
+}
+.client_message{
+  text-align: center;
+  padding-right: 6px;
+}
+.client_message textarea{
+  height: 200px;
+  width: 80vw;
+  background: none;
+  border: none;
+  box-shadow: inset 0 0 2px var(--basic_clr);
+  font-size: var(--pg_size);
+  color: var(--basic_clr);
+  border-radius: 2px;
+  padding: 10px;
+  outline: none;
+  transition: all 0.5s ease-in-out;
+}
+.client_message textarea:hover{
+  box-shadow: 0 0 5px violet;
+  scale: 1.03;
+}
+
+.button{
+  margin-top: 20px;
+  width: 92%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: left;
+}
+#send_message{
+  font-size: var(--pg_size);
+  height: 40px;
+  width: clamp(140px,10vw,200px);
+  border: none;
+  border-radius: 3px;
+  background: var(--phone_btn_clr);
+  padding: 5px;
+  color: var(--basic_clr);
+}
+
+#footer{
+  padding-top: 20px;
+  padding-bottom: 10px;
+  min-height: 8vh;
+  background: var(--alt_background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#footer p{
+  color: var(--basic_clr);
+  font-size: var(--pg_size);
+}
+
+.show{
+  opacity: 1;
+}
+.none_desktop{
+  display: none;
+}
+
+/* Laptops ONLY */
+@media (min-width: 1024px) and (min-height: 700px) and (aspect-ratio > 1.3){
+  #service h2, #service p, .logo{
+    scale: 1.3;
+    
+  }
+  #homepage {
+    height: 100vh;
+  }
+  .intro-text{
+    position: absolute;
+    align-items: flex-start;
+    height: 50vh;
+    width: 60vw;
+    margin-top: 20%;
+    margin-left: 13%;
+    scale: 1.3;
+  }
+  .intro_cont{
+   animation: adjust 1s forwards 0.4s;
+   position: fixed;
+   top: 0;
+   z-index: 1000;
+ }
+ .hero-text{
+   text-align: left;
+   width: 50vw;
+ }
+ #hamburger_menu,#close_menu{
+    visibility: hidden;
+  }
+  #Desktop_links{
+   display: flex;
+   justify-content: space-between;
+   font-size: var(--pg_size);
+   width: 60vw;
+   position: fixed;
+   top: 6%;
+   right: 4%;
+   z-index: 600;
+  }
+ #Desktop_links a{
+   color: var(--basic_clr);
+   text-decoration: none;
+ }
+ #Desktop_links > li:nth-child(1){
+  animation: fadeIn 1s linear forwards 1.4s;
+  list-style: none;
+  opacity: 0;
+}
+
+#Desktop_links > li:nth-child(2){
+  animation: fadeIn 1s linear forwards 1.6s;
+  list-style: none;
+  opacity: 0;
+}
+
+#Desktop_links > li:nth-child(3){
+  animation: fadeIn 1s linear forwards 1.8s;
+  list-style: none;
+  opacity: 0;
+}
+
+#Desktop_links > li:nth-child(4) {
+  animation: fadeIn 1s linear forwards 2s;
+  list-style: none;
+  opacity: 0;
+}
+
+@keyframes fadeIn{
+  to{
+    opacity: 1;
+  }
+}
+.scroll{
+   position: fixed;
+   top: 0;
+   width: 100vw;
+   height: 15vh;
+   background: var(--homepage_bg) center;
+   z-index: 555;
+}
+.service_text{
+  font-size: var(--pg_size);
+  width: 100vw;
+  text-align: center;
+}
+.icons{
+  width: 24.5vw;
+  justify-content: space-between;
+}
+
+.service_describ{
+  width: 60%;
+  left: 65%;
+  height: 50%;
+  transform: translateX(-60%);
+  margin-top: 5%;
+}
+.service_box{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    /*width: 80vw;*/
+    min-height: 270vh;
+  }
+
+.info_box{
+   /*width: 100%;
+   height: 100%;*/
+  }
+
+.title{
+  font-size: var(--alt_heading_size);
+}
+
+.cards{
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.form_cont{
+  width: 70vw;
+  display: flex;
+  justify-content: space-evenly;
+  height: 45vh;
+}
+.client_input input{
+  width: 30vw;
+}
+.client_message textarea{
+  width: 30vw;
+  height: 92%;
+  margin-top: 10px;
+}
+.none_desktop{
+  display: block;
+}
+.none{
+  display: none;
+}
+.button{
+  margin-left: -20px;
+}
+
+}
+
+/* Tablet & iPad */
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+#homepage{
+  /*height: 60vh*/;
+}
+#hamburger_menu{
+  margin-top: 17px;
+  margin-bottom: 17px;
+}
+.intro-text{
+  scale: 1.6;
+  height: 30vh;
+  margin-top: 20vh;
+}
+.hero-text{
+  width: 60%;
+}
+.intro-logo{
+  scale: 1.6; 
+}
+.intro_cont{
+    
+}
+@keyframes pad{
+  to{
+    
+  }
+}
+.intro-logo{
+  animation: shrink 0.8s ease-in forwards 0.5s, rotate 1.5s linear 1.5s;
+}
+@keyframes shrink {
+  to {
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    box-shadow: 0 0 3px black;
+    margin-left: 5%;
+  }
+}
+#hamburger_menu,#close_menu{
+  height: 60px;
+  width: 60px;
+}
+ul#links li a{
+ text-decoration: none;
+  color: var(--basic_clr);
+  font-size: 2.5rem;
+}
+#service h2, .title, .projects_describtion  h2, .contact_describtion h2{
+  font-size: var(--tablet_h_font_size);
+}
+/*.service_describ{
+  font-size: var(--alt_heading_size);
+}
+.service_text, .projects_describtion  p, .contact_describtion p{
+  border: 2px solid blue;
+  scale: 1.6;
+  width: 55%;
+  margin-left: 0;
+  font-size: var(--pg_size);
+}
+.projects_describtion  p, .contact_describtion p{
+  /*margin-top: 40px;
+  margin-left: 22vw;*/
+
+.service_box{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 80vw;
+  }
+
+.info_box{
+   width: 100%;
+   height: 100%;
+  }
+.cards{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  
+}
+.project_img{
+ /* width: 350px;
+  height: 350px;*/
+}
+
+.form_cont{
+  margin-top: 100px;
+}
+.client_message textarea{
+
+}
+#send_message{
+  width: 20%;
+  margin-left: 21px;
+}
+}
+
+/* Target landscape orientation */
+@media only screen and (max-height: 390px) and (orientation: landscape) {
+  /* CSS for phones in landscape mode */
+/*.intro-logo{
+  margin-top: 0;
+}*/
+
+#homepage{
+    height: 150vh;
+    background: var(--homepage_bg) center;
+  }
+.intro-text{
+    scale: 1;
+    margin-top: 65vh;
+    position: relative;;
+  }
+.intro-logo{
+    scale: 1;
+  }
+#hamburger_menu,#close_menu{
+   height: 40px;
+   width: 40px;
+  }
+.intro_cont{
+ /* height: 68px;*/
+ }
+.hero-text{
+   width: 90vw;
+
+ }
+.buttons{
+   position: absolute;
+   top: 58vh;
+ }
+.info_box {
+  width: 60%;
+}
+.project_img{
+  width: ;
+}
+#send_message{
+  width: 20vw
+}
+.client_message{
+  /*padding-right: 60px;*/
+}
+.button{
+  position: relative;
+  left: 40%;
+  transform: translateX(-40%);
+}
+
+#service{
+  padding-top: 20px;
+}
+
+.service_box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  margin-top: clamp(3vh,5vh,13%);
+  transition: opacity 1.3s ease-in-out;
+}
+
+#service > h2, .contact_describtion > h2, .projects_describtion > h2{
+  font-size: var(--landscape_heading_size);
+  scale: 1;
+  margin-bottom: 10px;
+}
+#service > p, .contact_describtion > p, .projects_describtion p{
+  font-size: var(--pg_size);
+  width: 80vw;
+  scale: 1;
+}
+.service_text{
+  width: 90vw;
+}
+.title{
+  font-size: var(--alt_heading_size);
+}
+.service_describ{
+  font-size: var(--pg_size);
+}
+
+ul#links li a{
+  font-size: var(--pg_size);
+}
+
+.projects_describtion > p{
+  font-size: var(--pg_size);
+}
+
+.cards{
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(1, 350px);
+  grid-template-rows: repeat(1, 350px);
+  height: 1550px;
+  width: 350px;
+  margin-top: 8vh;
+  gap: 30px;
+}
+.cards p{
+  padding: 7px;
+}
+#Projects {
+  
+}
+.project_img{
+  height: 350px;
+  width: 350px;
+}
+
+}
+
+.linkImg{
+  height: 50px;
+  width: 80px;
+}
+  </style>
+</head>
+<body>
+  <!-- homepage section -->
+  <section id="homepage" class="scroll_animation">
+  <div class="scroll"></div> 
+  <!-- introductory animation/ menu -->
+  <div class="intro_cont">
+    <div class="intro-logo">
+          <img src="my_logo.png" class="logo" />
+    </div>
+    <div class="menu">
+      <img src="hamburger.png" id="hamburger_menu" >
+    </div>
+   </div>
+  <!-- Phone_links -->
+  <img src="close.png" id="close_menu" alt="closs">
+  <ul id="links">
+    <li><a href="#homepage">Home</a></li>
+    <li><a href="#service">Services</a></li>
+    <li><a href="#Projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  
+  <!-- Desktop_links  -->
+  <ul id="Desktop_links">
+     <li><a href="#homepage">Home</a></li>
+     <li><a href="#service">Services</a></li>
+     <li><a href="#Projects">Projects</a></li>
+     <li><a href="#contact">Contact</a></li>
+  </ul>
+  
+  <main>
+    
+    <div class="intro-text">
+       <h2>Hi I'm Jack</h2>
+       <h2>And am a <span class="occupation">Frontend Developer</span> </h2>
+       <p  class="hero-text">I build modern, fast and responsive websites. I love bringing my ideas to life using smooth animations.</p>
+       
+        <div class="buttons">
+           <button>Hire me</button>
+           <button id="contact_button">Contact me</button>
+     </div>
+        
+        <div class="icons icons_hidden">
+           
+           <a href="https://facebook.com" target="_blank"><img src="facebook.png" id="facebook"></a>
+            <a href="https://x.com" target="_blank"><img src="X.png" id="twitter"></a>
+            <a href="https://Gmail.com" target="_blank"><img src="Mail.png" id="mail"></a>
+            <a href="https://Discord.com" target="_blank"><img src="Discord.png" id="discord"></a>
+        </div>
+      
+    </div>
+    
+  </main>
+  </section>
+ 
+ <section id="service">
+   <h2>My Services</h2>
+   <p class="service_text">A collection of the services I provide as a developer. Let’s build something amazing together. </p>
+   
+   <div class="service_box">
+     <div id="info_box"></div>
+   </div>
+ </section>
+ 
+ <section id="Projects">
+   
+   <div class="projects_describtion">
+     <h2>My Projects</h2>
+     <p>A selection of the real-world projects I’ve built, showcasing my skills in design, development, and problem-solving.</p>
+   </div>
+  
+   <div class="projects_cards">
+     <div class="cards"></div>
+   </div>
+ </section>
+ 
+ <section id="contact">
+   
+  <div class="contact_describtion">
+     <h2>Contact me</h2>
+     <p>Have a project in mind or just want to say hello? Fill out the form below, and I'll get back to you as soon as possible.</p>
+  </div>
+   
+   <form class="form_cont" action="https://formspree.io/f/mgvgnldg" method="POST">
+     <div class="client_input">
+       
+       <label for="first_name">
+         <input type="text" placeholder="First name" required="please fill this input" name="message">
+       </label>
+       
+       <label for="surname">
+         <input type="text" placeholder="Last name" required="please fill this input" name="message">
+       </label>
+       
+       <label for="email">
+         <input type="email" placeholder="Email address" required="please fill this input" name="message">
+       </label>
+       
+       <label for="country">
+         <input type="text" placeholder="Country" required="please fill this input" name="message">
+       </label>
+       
+       <div class="button none_desktop">
+         <button id="send_message" class="desktop_btn" type="submit">
+          Send message
+          </button>
+        </div>
+        
+     </div>
+     
+     <div class="client_message">
+       
+       <textarea placeholder="Write message here..." required="please fill this input" name="message"></textarea>
+       
+     </div>
+      <div class="button none">
+         <button id="send_message" type="submit" class="none">
+          Send message
+        </button>
+      </div>
+   </form>
+  
+ </section>
+
+ <footer id="footer">
+   <p> &copy; 2025 Jack - All Rights Reserved</p> <br>
+   <p> Contact Me Via:</p>
+   <div class="footer_icons">
+           
+           <a href="https://facebook.com" target="_blank"><img src="facebook.png" id="facebook"></a>
+            <a href="https://x.com" target="_blank"><img src="X.png" id="twitter"></a>
+            <a href="https://Gmail.com" target="_blank"><img src="Mail.png" id="mail"></a>
+            <a href="https://Discord.com" target="_blank"><img src="Discord.png" id="discord"></a>
+        </div>
+      
+    </div>
+ </footer>
+ 
+<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script>
+
+<script>
+const hamburger_menu = document.getElementById("hamburger_menu");
+const links = document.getElementById("links");
+const close_menu = document.getElementById("close_menu");
+const menuLinks = document.querySelectorAll("#links a");
+const contact_button = document.getElementById("contact_button");
+const icons_hidden = document.querySelector(".icons_hidden");
+const facebook = document.getElementById("facebook");
+const twitter = document.getElementById("twitter");
+const mail = document.getElementById("mail");
+const discord = document.getElementById("discord");
+const service_box = document.querySelector(".service_box");
+const cards = document.querySelector(".cards");
+const form_cont = document.querySelector(".form_cont");
+const projects_describtion = document.querySelector(".projects_describtion");
+const contact_describtion = document.querySelector(".contact_describtion");
+const send_message = document.getElementById("send_message");
+
+hamburger_menu.addEventListener("click", () =>{
+  links.style.visibility = "visible";
+  close_menu.style.visibility = "visible";
+});
+setInterval(() => {
+  hamburger_menu.style.display = "block";
+}, 2800);
+
+close_menu.addEventListener("click", () =>{
+  links.style.visibility = "hidden";
+  close_menu.style.visibility = "hidden"
+})
+
+menuLinks.forEach(link =>{
+  link.addEventListener("click", () =>{
+    links.style.visibility = "hidden";
+    close_menu.style.visibility = "hidden"
+  })
+})
+
+contact_button.addEventListener("click", () =>{
+  icons_hidden.style.visibility = "visible";
+  facebook.classList.add("facebook")
+  twitter.classList.add("x");
+  mail.classList.add("mail");
+  discord.classList.add("discord");
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("displayBox");
+    observer.unobserve(entry.target);
+    
+    if(entry.target.classList.contains("project_img_div")){
+      entry.target.classList.add("project_img_slide");
+      observer.unobserve(entry.target)
+    }
+    if(entry.target.classList.contains("form_cont")){
+      entry.target.classList.add("form_cont_slideUp");
+      observer.unobserve(entry.target);
+    }
+    if(entry.target.classList.contains("projects_describtion")){
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target)
+    }
+    if(entry.target.classList.contains("contact_describtion")){
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target)
+    }
+    
+    }
+  });
+}, {
+  root: null,
+  threshold: 0.3,
+  rootMargin: "0px"
+});
+
+const services = [
+   {
+    mask_color: "#212121",
+    icon: "Website.png",
+    title: "Portfolio Websites Development",
+    text: "I build clean and modern portfolio websites that help individuals showcase their work professionally. Whether you're a creative, freelancer, student, or business owner, I create responsive portfolio sites that highlight your skills, achievements, and brand in the best way possible.",
+   },
+   {
+     mask_color: "#004D4D",
+     icon: "Landingweb.png",
+     title: "Landing Page Design & Development",
+     text: "I design and develop high-converting landing pages for product launches, events, businesses, and personal brands. My landing pages are responsive, fast, and built to attract attention while guiding visitors to take action.",
+   },
+   {
+   mask_color: "#800020",
+   icon: "Ui_Ux.png",
+   title: "UI Design (Figma Website Mockups)",
+   text: "I create beautiful and user-friendly website designs using Figma. From layout structure to typography and color choices, I provide clean, modern designs that can be used for development, presentations, or brand identity.",
+   },
+   {
+     mask_color: "#0A192F",
+     icon: "Adjustment.png",
+     title: "Website Fixes & Responsive Adjustments",
+     text: "If your website looks broken, loads incorrectly, or behaves differently on mobile, I can fix it. I resolve layout issues, responsiveness problems, animation errors, spacing bugs, and general HTML/CSS/JavaScript glitches to ensure your site works perfectly on all devices.",
+   },
+   {
+     mask_color: "#556B2F",
+     icon: "Animation.png",
+     title: "Custom Website Animations",
+     text: "I create smooth and engaging animations that make websites stand out. This includes text animations, scroll-triggered effects, section transitions, hero animations, and loaders — all designed to enhance the user experience without slowing down your site.",
+   },
+   {
+     mask_color: "#28004F",
+     icon: "Code.png",
+     title: "Design-to-Code Conversion",
+     text: "I convert designs, screenshots, or Figma files into clean, responsive HTML, CSS, and JavaScript code. The result is a pixel-perfect website that matches the original design while being fully optimized for performance and mobile devices.",
+   },
+  ];
+  
+services.forEach(service =>{
+    const cover = document.createElement("div");
+    cover.className = "cover";
+    
+     const info_box = document.createElement("div");
+     info_box.className = "info_box";
+     
+     const mask_color = document.createElement("span");
+     mask_color.className = "mask_color";
+     mask_color.style.background = service.mask_color;
+     
+     const icon = document.createElement("img");
+     icon.className = "service_icon";
+     icon.src = service.icon;
+     
+     const title = document.createElement("h3");
+     title.className = "title";
+     title.textContent = service.title;
+    
+    const text = document.createElement("p");
+    text.className = "service_describ";
+    text.textContent = service.text;
+    
+     info_box.appendChild(cover);
+     info_box.appendChild(mask_color);
+     info_box.appendChild(icon);
+     info_box.appendChild(title);
+     info_box.appendChild(text);
+     service_box.appendChild(info_box);
+    
+    observer.observe(info_box)
+  });
+  
+// JS - uses your projects array and creates auto-sliding for each project
+const projects = [
+  {
+    url: [
+      "Inventory(1).jpg",
+      "Inventory(2).jpg",
+      "Inventory(3).jpg",
+      "Inventory(4).jpg"
+    ],
+    name: "Inventory App",
+    describtion: "A simple web-based inventory system. Users can add products, upload images, set quantities, and track items sold. The app automatically calculates stock value, and saves all data using localStorage, so inventory remains intact even after the browser is closed. It also includes a search function, real-time updates, and automatic sold-out detection.",
+    logo: "Link.png",
+    link: "https://www.facebook.com"
+  },
+    {
+    url: [
+      "Reading(1).jpg",
+      "Reading(2).jpg",
+      "Reading(3).jpg",
+      "Reading(4).jpg"
+    ],
+    name: "Reading App",
+    describtion: "A simple web-based inventory system. Users can add products, upload images, set quantities, and track items sold. The app automatically calculates stock value, and saves all data using localStorage, so inventory remains intact even after the browser is closed. It also includes a search function, real-time updates, and automatic sold-out detection.",
+    logo: "Link.png",
+    link: "https://www.facebook.com"
+  },
+    {
+    url: [
+      "Game(1).jpg",
+      "Game(2).jpg",
+      "Game(3).jpg",
+      "Game(4).jpg"
+    ],
+    name: "Tic-tac-toe Game",
+    describtion: "A simple web-based inventory system. Users can add products, upload images, set quantities, and track items sold. The app automatically calculates stock value, and saves all data using localStorage, so inventory remains intact even after the browser is closed. It also includes a search function, real-time updates, and automatic sold-out detection.",
+    logo: "https://i.imgur.com/3GJE7Pd.jpeg",
+    link: "https://www.facebook.com"
+  },
+    {
+    url: [
+      "https://i.imgur.com/fPUMFyU.jpeg",
+      "https://i.imgur.com/3GJE7Pd.jpeg",
+      "https://i.imgur.com/fPUMFyU.jpeg",
+      "https://i.imgur.com/62kHkWx.jpeg"
+    ],
+    name: "Inventory App",
+    describtion: "A simple web-based inventory system. Users can add products, upload images, set quantities, and track items sold. The app automatically calculates stock value, and saves all data using localStorage, so inventory remains intact even after the browser is closed. It also includes a search function, real-time updates, and automatic sold-out detection.",
+    logo: "",
+    link: "https://www.tiktok.com"
+  }, 
+];
+
+const SLIDE_INTERVAL_MS = 3000; 
+
+projects.forEach((project, projIndex) => {
+  // create container
+  
+  const project_img_div = document.createElement("div");
+  project_img_div.className = "project_img_div";
+
+   const describ_link = document.createElement("div");
+   describ_link.className = "describ_link";
+   
+   const describ_text = document.createElement("p");
+   describ_text.textContent = project.describtion;
+   
+   const name_link_cont = document.createElement("div");
+   name_link_cont.className = "name_link_cont";
+   
+   const project_name = document.createElement("h3");
+   project_name.textContent = project.name;
+  
+   const live_link = document.createElement("a");
+   live_link.innerHTML = `<img src="Link.png" class="linkImg"/>`;
+   live_link.href = project.link;
+   
+   name_link_cont.appendChild(project_name);
+   name_link_cont.appendChild(live_link);
+   
+   describ_link.appendChild(name_link_cont);
+   describ_link.appendChild(describ_text);
+   
+  project.url.forEach((link, index) => {
+    const project_img = document.createElement("img");
+    project_img.className = "project_img";
+    project_img.src = link;
+  
+
+  
+    let clicked = true;
+    project_img_div.addEventListener("click", () => {
+     if(clicked === true){
+       describ_link.classList.remove("hide_visibility");
+       describ_link.classList.add("show_describtion");
+       
+       clicked = false;
+     }else{
+       describ_link.classList.remove("show_describtion");
+       describ_link.classList.add("hide_visibility");
+      
+       clicked = true;
+     }
+     
+     describ_link.classList.add("describ_link_animate");
+});
+    
+    // show only the first image initially
+    if (index === 0) project_img.classList.add("displayImg");
+    project_img_div.appendChild(project_img);
+    project_img_div.appendChild(describ_link);
+  });
+
+  // append to page
+  cards.appendChild(project_img_div);
+
+  //IntersectionObserver
+  observer.observe(project_img_div)
+    
+  // Setup slider logic for THIS project container
+  setupAutoSlider(project_img_div, SLIDE_INTERVAL_MS);
+});
+
+/**
+ * setupAutoSlider(container, interval)
+ * - container: the .project_img_div element
+ * - interval: milliseconds between slides
+ */
+function setupAutoSlider(container, interval) {
+  const images = Array.from(container.querySelectorAll(".project_img"));
+  if (images.length <= 1) return; // nothing to slide
+
+  let currentIndex = images.findIndex(img => img.classList.contains("displayImg"));
+  if (currentIndex === -1) currentIndex = 0;
+  // ensure only the current has displayImg
+  images.forEach((img, i) => img.classList.toggle("displayImg", i === currentIndex));
+
+  // function to move to next image
+  function showNext() {
+    images[currentIndex].classList.remove("displayImg");
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].classList.add("displayImg");
+  }
+
+  // start automatic sliding
+  const timerId = setInterval(showNext, interval);
+
+  // Optional: pause on hover, resume on mouseleave
+  container.addEventListener("mouseenter", () => clearInterval(timerId)); // stop while hovering
+  container.addEventListener("mouseleave", () => {
+    // restart interval (create a new one)
+    // note: creating a new timer variable inside closure so it persists is necessary
+    // We'll wrap into a tiny helper to avoid shadowing issues
+    restartInterval();
+  });
+
+  // helper to restart interval after mouseleave
+  function restartInterval() {
+    // clear any existing (defensive)
+    if (container._sliderTimer) clearInterval(container._sliderTimer);
+    container._sliderTimer = setInterval(showNext, interval);
+  }
+
+  // store reference so we can clear it later if needed
+  container._sliderTimer = timerId;
+}
+
+observer.observe(form_cont);
+observer.observe(projects_describtion);
+observer.observe(contact_describtion);
+
+send_message.addEventListener("submit", () =>{
+  form_cont.reset();
+});
+ </script>
+</body>
+</html>
